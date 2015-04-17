@@ -26,11 +26,12 @@ public class UIManager
 	{
 		//Output
 		System.out.println();
-		System.out.println("Login with your Teacher ID or (exit) to Exit");
+		System.out.println("Login with your Teacher ID(t_[ID]), Student ID(s_[ID]), or (exit) to Exit");
 		System.out.print("ID:");
 		
 		//Input
-		String input = keyboard.nextLine();
+		String input = keyboard.next().toLowerCase();
+		keyboard.nextLine();
 		
 		//Processing
 		switch(input)
@@ -41,7 +42,7 @@ public class UIManager
 		case "exit":
 			System.exit(0);
 			break;
-		default:
+		case "t":
 			int id = 0;			
 			//Checks to see if ID is valid
 			try
@@ -53,7 +54,7 @@ public class UIManager
 				System.out.println("Input Valid ID!");
 				loginScreen();
 				break;
-			}			
+			}		
 			//Checks to see if ID exists 
 			if(getTeacherIndexLoc(teachers, id) != -1)
 			{
@@ -65,6 +66,11 @@ public class UIManager
 				loginScreen();
 			}
 			break;
+		case "s":
+			//Add in same as teacher for students
+			break;
+		default:
+			System.out.println("Input Valid Command!");
 		}
 	}
 	
@@ -154,6 +160,13 @@ public class UIManager
 	private void teacherLoginMain(int id)
 	{
 		System.out.println(teachers.get(getTeacherIndexLoc(teachers, id)).toString());
+		
+		//UI
+	}
+	
+	private void studentLoginMain(int id)
+	{
+		//ID
 		
 		//UI
 	}

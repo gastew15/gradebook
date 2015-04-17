@@ -10,6 +10,7 @@ public class Classroom
 {
 	private int roomNumber;
 	private int hour;
+	private int numberOfSeats;
 	private List<Student> students;
 	
 	/**
@@ -20,6 +21,7 @@ public class Classroom
 		roomNumber = - 1;
 		hour = -1;
 		students = new ArrayList<Student>();
+		setNumberOfSeats(0);
 	}
 	
 	/**
@@ -27,10 +29,11 @@ public class Classroom
 	 * @param roomNumber Room number of the room used
 	 * @param hour What hour the class is used by teacher
 	 */
-	public Classroom(int roomNumber, int hour)
+	public Classroom(int roomNumber, int hour, int numberOfSeats)
 	{
 		this.setRoomNumber(roomNumber);
 		this.setHour(hour);
+		this.setNumberOfSeats(numberOfSeats);
 		this.students = new ArrayList<Student>();
 	}
 	
@@ -189,5 +192,13 @@ public class Classroom
 				return i;
 		}
 		return - 1;
+	}
+
+	public int getNumberOfSeats() {
+		return numberOfSeats;
+	}
+
+	public void setNumberOfSeats(int numberOfSeats) {
+		this.numberOfSeats = numberOfSeats;
 	}
 }

@@ -19,7 +19,7 @@ public class FileReader
 	{	
 		//Temp
 		teachers.add(new Teacher(32, "Ken Blip", "English"));
-		teachers.get(0).addClassroom(new Classroom(12, 1));
+		teachers.get(0).addClassroom(new Classroom(12, 1, 25));
 		teachers.get(0).getClassroom(1).addStudent(new Student(1, "Bill", "Lowe", 11));
 	}
 	
