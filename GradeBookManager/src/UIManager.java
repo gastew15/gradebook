@@ -70,11 +70,87 @@ public class UIManager
 	
 	private void adminLoginMain()
 	{
+		System.out.println();
 		System.out.println("ADMIN");
+		System.out.println("Teacher Management(teacher), Classroom Management(classroom), student Management(student) Go Back(back)");
+		System.out.print("Input: ");
 		
-		//UI
+		//Input
+		String input = keyboard.nextLine();
+				
+		//Processing
+		switch(input)
+		{
+			case "teacher":
+				adminTeacher();
+				break;
+			case "classroom":
+				adminClassroom();
+				break;
+			case "student":
+				adminStudent();
+				break;
+			case "back":
+				loginScreen();
+				break;
+			default:
+				
+				System.out.println("Input Valid Command!");
+				adminLoginMain();
+				break;
+		}
 	}
 	
+	private void adminStudent() 
+	{
+		// TODO Auto-generated method stub		
+	}
+
+	private void adminClassroom() 
+	{
+		// TODO Auto-generated method stub		
+	}
+
+	private void adminTeacher() 
+	{
+		System.out.println();
+		System.out.println("List Teachers(list), select teacher(select_[ID]), Add Teacher(add), Remove Teacher(remove_[ID]), modify Teacher(edit_[ID]), Go Back(back)");
+		System.out.print("Input: ");
+		
+		//Input
+		String input = keyboard.next();
+		keyboard.nextLine();
+				
+		//Processing
+		switch(input)
+		{
+			case "list":
+				//List
+				break;
+			case "select":
+				//Select
+				//*NOTE: Can add classes, remove classes, modify classes from here
+				break;
+			case "add":
+				//Add
+				break;
+			case "remove":
+				//Remove
+				break;
+			case "edit":
+				//Edit
+				break;
+			case "back":
+				adminLoginMain();
+				break;
+			default:
+				
+				System.out.println("Input Valid Command!");
+				adminTeacher();
+				break;
+		}
+	}
+
 	private void teacherLoginMain(int id)
 	{
 		System.out.println(teachers.get(getTeacherIndexLoc(teachers, id)).toString());
