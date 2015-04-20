@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * UI Manager Class for managing the UI section of the program
  * @author G. Stewart
- * @version 4/16/2015
+ * @version 4/20/2015
  */
 public class UIManager 
 {
@@ -24,14 +24,25 @@ public class UIManager
 	
 	public void loginScreen()
 	{
+		int id;	
+		String idIn;
+		
 		//Output
 		System.out.println();
 		System.out.println("Login with your Teacher ID(t_[ID]), Student ID(s_[ID]), or (exit) to Exit");
 		System.out.print("ID:");
 		
 		//Input
-		String input = keyboard.next().toLowerCase();
-		keyboard.nextLine();
+		String input = keyboard.nextLine().toLowerCase();
+		try
+		{
+		idIn = input.substring(input.indexOf(" ") + 1, input.length());
+		input = input.substring(0, input.indexOf(" "));
+		}
+		catch(Exception e)
+		{
+			idIn = "";
+		}
 		
 		//Processing
 		switch(input)
@@ -43,11 +54,11 @@ public class UIManager
 			System.exit(0);
 			break;
 		case "t":
-			int id = 0;			
+			id = 0;			
 			//Checks to see if ID is valid
 			try
 			{
-				id = Integer.parseInt(input);
+				id = Integer.parseInt(idIn);
 			}
 			catch(Exception e)
 			{
@@ -67,10 +78,32 @@ public class UIManager
 			}
 			break;
 		case "s":
-			//Add in same as teacher for students
+			id = 0;			
+			//Checks to see if ID is valid
+			try
+			{
+				id = Integer.parseInt(idIn);
+			}
+			catch(Exception e)
+			{
+				System.out.println("Input Valid ID!");
+				loginScreen();
+				break;
+			}		
+			//Checks to see if ID exists 
+			if(getStudentIndexLoc(students, id) != -1)
+			{
+				studentLoginMain(id);
+			}
+			else
+			{
+				System.out.println("ID Not Found!");
+				loginScreen();
+			}
 			break;
 		default:
 			System.out.println("Input Valid Command!");
+			loginScreen();
 		}
 	}
 	
@@ -166,7 +199,7 @@ public class UIManager
 	
 	private void studentLoginMain(int id)
 	{
-		//ID
+		System.out.println(students.get(getStudentIndexLoc(students, id)).toString());
 		
 		//UI
 	}
@@ -176,6 +209,16 @@ public class UIManager
 		for(int i = 0; i < teachers.size(); i++)
 		{
 			if(teachers.get(i).getId() == id)
+				return i;
+		}
+		return -1;
+	}
+	
+	public int getStudentIndexLoc(List<Student> students, int id)
+	{
+		for(int i = 0; i < students.size(); i++)
+		{
+			if(students.get(i).getId() == id)
 				return i;
 		}
 		return -1;

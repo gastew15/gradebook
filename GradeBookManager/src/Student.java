@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Student class that manages information on students and their assignments
  * @author G. Stewart
- * @version 4/16/2015
+ * @version 4/20/2015
  */
 public class Student 
 {
@@ -111,7 +111,7 @@ public class Student
 	 */
 	public String getName()
 	{
-		return lastName + ", " + firstName;
+		return lastName + " " + firstName;
 	}
 	
 	/**
